@@ -1,2 +1,2 @@
 # fofocas-historicas
-Blog de babados históricod
+Blog de babados históricos
