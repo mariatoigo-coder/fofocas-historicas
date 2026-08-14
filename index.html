@@ -87,15 +87,32 @@
 <script>
     const botoes = document.querySelectorAll("button");
 
+    let voto = null;
+
     botoes.forEach(function(botao) {
 
         botao.addEventListener("click", function() {
 
-            console.log("fui clicado");
+            const contador = botao.querySelector("span");
 
-            let texto = botao.querySelector("span");
+            // Se clicou no mesmo botão novamente, não faz nada
+            if (voto === botao) {
+                return;
+            }
 
-            texto.textContent = Number(texto.textContent) + 1;
+            // Se já tinha votado no outro botão, diminui o contador dele
+            if (voto !== null) {
+                const contadorAnterior = voto.querySelector("span");
+                contadorAnterior.textContent =
+                    Number(contadorAnterior.textContent) - 1;
+            }
+
+            // Adiciona o voto no botão clicado
+            contador.textContent =
+                Number(contador.textContent) + 1;
+
+            // Guarda o botão que recebeu o voto
+            voto = botao;
         });
 
     });
